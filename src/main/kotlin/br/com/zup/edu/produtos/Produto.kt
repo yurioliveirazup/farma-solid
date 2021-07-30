@@ -19,7 +19,7 @@ class Produto(@field:NotBlank val nome: String,
     var id: Long? = null
 
 
-    fun decrementa() : Produto{
+    fun decrementaEstoque() : Produto {
         quantidadeEmEstoque--
 
         return this

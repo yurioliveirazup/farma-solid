@@ -13,5 +13,16 @@ class NotaFiscal(@ManyToOne val compra: Compra,
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    var valor: BigDecimal = BigDecimal.ZERO
+    var valor: BigDecimal
+    private set
+
+    init {
+
+        valor = if (compra.total > BigDecimal("100.0")) {
+            compra.total * BigDecimal("1.3")
+        } else {
+            compra.total * BigDecimal("1.5")
+        }
+
+    }
 }
